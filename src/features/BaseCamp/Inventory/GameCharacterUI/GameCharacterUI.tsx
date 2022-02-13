@@ -1,5 +1,12 @@
-export default function GameCharacter()
+import { useEffect } from 'react';
+import { useAppSelector } from '../../../../app/hooks';
+import { RootState } from '../../../../app/RootStateStore';
+import GameCharacter from '../../../../models/GameCharacter';
+
+export default function GameCharacterUI()
 {
+    const { health, energy, armorChest } = useAppSelector((state: RootState) => state.character);
+
     return (
         <div>
             <h2>Implement a UI here</h2>
@@ -7,8 +14,8 @@ export default function GameCharacter()
                 <h3>Name: Jeffery Jefferson</h3>
 
                 <ul>
-                    <li>Health: 100</li>
-                    <li>Energy: 3</li>
+                    <li>Health: {health}</li>
+                    <li>Energy: {energy}</li>
                 </ul>
             </section>
 
@@ -17,7 +24,7 @@ export default function GameCharacter()
 
                 <ul>
                     <li>Helmet: Helm of defaults</li>
-                    <li>Chest: Chest of the basic</li>
+                    <li>Chest: {armorChest?.name}</li>
                     <li>Legs: Greaves of simpleness</li>
                     <li>Gauntlets: Leather gloves</li>
                     <li>Boots: Comfy shoes</li>

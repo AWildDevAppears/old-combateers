@@ -1,4 +1,4 @@
-import GameCharacter from "../../features/BaseCamp/Inventory/GameCharacter/GameCharacter";
+import GameCharacterUI from "../../features/BaseCamp/Inventory/GameCharacterUI/GameCharacterUI";
 import InventoryItemList from "../../features/BaseCamp/Inventory/InventoryItemList/InventoryItemList";
 
 /**
@@ -9,7 +9,7 @@ export default function GameInventoryView()
 {
     return (
         <div className="cbtrs-inventory">
-            <GameCharacter />
+            <GameCharacterUI />
             <InventoryItemList />
         </div>
     )

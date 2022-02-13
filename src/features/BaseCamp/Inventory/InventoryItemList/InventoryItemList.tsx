@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector } from '../../../../app/hooks';
 import { RootState } from '../../../../app/RootStateStore';
 import GameItem from '../../../../models/items/GameItem';
 
@@ -6,12 +6,11 @@ import InventoryItemListItem from "../InventoryItemListItem/InventoryItemListIte
 
 export default function InventoryItemList()
 {
-    const inventory = useSelector((state: RootState) => state.inventory.items);
-    const ditpatch = useDispatch();
-    
+    const { items } = useAppSelector((state: RootState) => state.inventory);
+
     return (
         <div className="list">
-            { inventory.map( (item: GameItem) => ( <InventoryItemListItem item={item} /> ) ) }
+            { items.map( (item: GameItem, idx: number) => ( <InventoryItemListItem key={idx} item={item} /> ) ) }
         </div>
     )
 }
