@@ -6,13 +6,13 @@ import GameInventoryView from './views/camp/GameInventoryView';
 import GamePartyView from './views/camp/GamePartyView';
 import GameQuestSelectView from './views/camp/GameQuestSelectView';
 import GameShopView from './views/camp/GameShopView';
-
-import './App.css';
 import GameStartView from './views/GameStartView';
+
+import './scss/app.scss';
 
 function App() {
   return (
-    <div className="combateers">
+    <div className="cbtrs">
       <BrowserRouter>
         <Routes>
           { /* Home */ }
