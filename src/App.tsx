@@ -1,24 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import GameDeckBuildView from './views/camp/GameDeckBuildView';
+import GameInventoryView from './views/camp/GameInventoryView';
+import GamePartyView from './views/camp/GamePartyView';
+import GameQuestSelectView from './views/camp/GameQuestSelectView';
+import GameShopView from './views/camp/GameShopView';
+
 import './App.css';
+import GameStartView from './views/GameStartView';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="combateers">
+      <BrowserRouter>
+        <Routes>
+          { /* Home */ }
+          <Route path="/" element={<GameStartView />} />
+
+          { /* Base camp */ }
+          <Route path="inventory" element={<GameInventoryView />} />
+          <Route path="deck" element={<GameDeckBuildView />} />
+          <Route path="shop" element={<GameShopView />} />
+          <Route path="party" element={<GamePartyView />} />
+    
+          { /* Quests */ }
+          <Route path="quest" element={<GameQuestSelectView />}/>
+        </Routes>
+      </BrowserRouter>
+      
     </div>
   );
 }
