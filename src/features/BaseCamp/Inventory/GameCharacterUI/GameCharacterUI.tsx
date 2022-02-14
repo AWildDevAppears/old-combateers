@@ -1,11 +1,16 @@
 import { useEffect } from 'react';
 import { useAppSelector } from '../../../../app/hooks';
 import { RootState } from '../../../../app/RootStateStore';
-import GameCharacter from '../../../../models/GameCharacter';
+import ItemLookup from '../../../../data/Items';
 
 export default function GameCharacterUI()
 {
-    const { health, energy, armorChest } = useAppSelector((state: RootState) => state.character);
+    const { health, energy, armorChest } = useAppSelector((state: RootState) => state.inventory);
+    let chestArmor = ItemLookup.getItem(armorChest);
+
+    useEffect( () => {
+        chestArmor = ItemLookup.getItem(armorChest);
+    } )
 
     return (
         <div>
@@ -24,7 +29,7 @@ export default function GameCharacterUI()
 
                 <ul>
                     <li>Helmet: Helm of defaults</li>
-                    <li>Chest: {armorChest?.name}</li>
+                    <li>Chest: {chestArmor?.name}</li>
                     <li>Legs: Greaves of simpleness</li>
                     <li>Gauntlets: Leather gloves</li>
                     <li>Boots: Comfy shoes</li>

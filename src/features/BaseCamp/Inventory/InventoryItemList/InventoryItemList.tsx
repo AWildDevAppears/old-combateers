@@ -10,7 +10,7 @@ export default function InventoryItemList()
 
     return (
         <div className="list">
-            { items.map( (item: GameItem, idx: number) => ( <InventoryItemListItem key={idx} item={item} /> ) ) }
+            { items.map( (item: string, idx: number) => ( <InventoryItemListItem key={idx} item={item} /> ) ) }
         </div>
     )
 }

@@ -7,15 +7,15 @@ export default interface IGameCharacter {
     energy: number
 
     // Weapon to buff damage / add special effects to cards.
-    weapon: GameWeapon | null
+    weapon: string | null
     
     // Armor to negate damage / add special effects to cards
-    armorChest: GameArmor | null
-    armorHelmet: GameArmor | null
-    armorBoots: GameArmor | null
-    armorGauntlets: GameArmor | null
-    armorLegwear: GameArmor | null
+    armorChest: string | null
+    armorHelmet: string | null
+    armorBoots: string | null
+    armorGauntlets: string | null
+    armorLegwear: string | null
 
     // Trinkets are aror pieces that usually don't have any defence but do have multiple modifiers for cards.
-    trinket: GameArmor | null
+    trinket: string | null
 }

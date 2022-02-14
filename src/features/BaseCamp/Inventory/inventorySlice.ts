@@ -1,28 +1,29 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import GameCharacter from "../../../models/GameCharacter";
-import GameItem from "../../../models/items/GameItem";
-import { equipItem as charEquipItem } from '../../Globals/characterSlice';
+import GameStateManager from "../../../app/GameStateManager";
 
 interface IInventoryState {
-    items: Array<GameItem>,
+    items: string[]
+    health: number
+    energy: number
+    armorChest: string | null
 }
 
 const initialState: IInventoryState = {
-    items: [
-        new GameItem( { name: 'item 1', description: '', } ),
-        new GameItem( { name: 'item 2', description: '', } ),
-        new GameItem( { name: 'item 3', description: '', } ),
-     ],
+    items: GameStateManager.inventory,
+    health: GameStateManager.character.health,
+    energy: GameStateManager.character.energy,
+    armorChest: GameStateManager.character.armorChest,
 };
 
 export const inventorySlice = createSlice({
     name: 'inventory',
     initialState,
     reducers: {
-        equipItem: (state, action: PayloadAction<GameItem> ) => {
+        equipItem: (state, action: PayloadAction<string> ) => {
             // Delete the item from the inventory
             // Place the item on the character / tell the character slice to do this
             // Add the item that the character had equipped to this slot in the inventory.
+            state.armorChest = action.payload;
         },
     },
 })

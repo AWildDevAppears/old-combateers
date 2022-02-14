@@ -1,18 +1,21 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useAppDispatch } from "../../../../app/hooks";
 import { AppDispatch } from "../../../../app/RootStateStore";
+import ItemLookup from "../../../../data/Items";
 
 import GameItem from "../../../../models/items/GameItem";
 import { equipItem } from "../inventorySlice";
 
 interface IProps {
-    item: GameItem
+    item: string
 }
 
 export default function InventoryItemListItem( props: IProps )
 {
     const dispatch = useAppDispatch();
     const controlsRef = useRef<HTMLUListElement>(null);
+    let itemObject = ItemLookup.getItem(props.item);
+
 
     const toggleItemControls = () => {
         controlsRef.current?.classList.toggle('hide');
@@ -20,14 +23,18 @@ export default function InventoryItemListItem( props: IProps )
 
     // Actions
     const handleEquipItem = () => dispatch(equipItem(props.item));
+   
+    useEffect( () => {
+        itemObject = ItemLookup.getItem(props.item);
+    } )
 
     return (
         <div
             className="inventory__list-item"
             onClick={toggleItemControls}
         >
-            <h3>{props.item.name}</h3>
-            <p>{props.item.description}</p>
+            <h3>{itemObject?.name}</h3>
+            <p>{itemObject?.description}</p>
 
             <ul className="inventory__list-item__stats">
             </ul>
