@@ -1,9 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useAppDispatch } from "../../../../app/hooks";
-import { AppDispatch } from "../../../../app/RootStateStore";
 import ItemLookup from "../../../../data/Items";
 
-import GameItem from "../../../../models/items/GameItem";
 import { equipItem } from "../inventorySlice";
 
 interface IProps {
