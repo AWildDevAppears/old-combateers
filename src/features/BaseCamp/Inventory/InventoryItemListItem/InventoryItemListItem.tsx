@@ -1,12 +1,15 @@
 import { useEffect, useRef } from "react";
 import { useAppDispatch } from "../../../../app/hooks";
 import ItemLookup from "../../../../data/Items";
-
 import { equipItem } from "../inventorySlice";
 
 interface IProps {
     item: string
+    idx: number
+    isSelected: boolean
+    setSelected: (idx: number) => void
 }
+
 
 export default function InventoryItemListItem( props: IProps )
 {
@@ -14,9 +17,8 @@ export default function InventoryItemListItem( props: IProps )
     const controlsRef = useRef<HTMLUListElement>(null);
     let itemObject = ItemLookup.getItem(props.item);
 
-
     const toggleItemControls = () => {
-        controlsRef.current?.classList.toggle('hide');
+        props.setSelected(props.idx);
     }
 
     // Actions
@@ -24,6 +26,8 @@ export default function InventoryItemListItem( props: IProps )
    
     useEffect( () => {
         itemObject = ItemLookup.getItem(props.item);
+        const action = props.isSelected ? 'remove' : 'add';
+        controlsRef.current?.classList[action]('hide');
     } )
 
     return (
