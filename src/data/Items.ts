@@ -1,6 +1,18 @@
+enum eItemType {
+    WEAPON,
+    HELMET,
+    CHEST,
+    BOOTS,
+    GAUNTLETS,
+    LEGWEAR,
+    CONSUMABLE,
+}
+
 interface IMultiItem {
     name: string
     description: string
+    equip?: boolean
+    type?: eItemType 
 }
 
 const data: {[key: string]: IMultiItem} = {
@@ -15,6 +27,12 @@ const data: {[key: string]: IMultiItem} = {
     'item:000003': {
         name: 'Item 3',
         description: '',
+    },
+    'weap:000001': {
+        name: 'Weapon 1',
+        description: '',
+        equip: true,
+        type: eItemType.WEAPON,
     }
 };
 
