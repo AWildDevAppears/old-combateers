@@ -4,6 +4,7 @@ interface IGameStateManager {
     inventory: string[]
     character: GameCharacter
     party: GameCharacter[]
+    deck: string[],
 }
 
 const GameStateManager: IGameStateManager = {
@@ -24,6 +25,16 @@ const GameStateManager: IGameStateManager = {
         trinket: null,
     },
     party: [],
+    deck: [
+        'card:000001',
+        'card:000001',
+        'card:000001',
+        'card:000002',
+        'card:000002',
+        'card:000002',
+        'card:000003',
+        'card:000003'
+    ]
 };
 
 export default GameStateManager;
