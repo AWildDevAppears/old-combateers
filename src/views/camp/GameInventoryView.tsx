@@ -14,3 +14,9 @@ export default function GameInventoryView()
         </div>
     )
 }
+
+// I can equip gear /
+// I can equip only equippable items
+// When I equip an item it goes into the right slot.
+// When I equip an item it is removed from my inventory
+// When I equip an item to a slot which already has an item, theo ld item goes back to the inventory. 
