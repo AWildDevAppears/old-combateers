@@ -5,12 +5,13 @@ import ItemLookup from '../../../../data/Items';
 
 export default function GameCharacterUI()
 {
-    const { health, energy, armorChest } = useAppSelector((state: RootState) => state.inventory);
+    const { health, energy, armorHelmet, armorChest, armorLegwear, armorBoots, armorGauntlets, } = useAppSelector((state: RootState) => state.inventory);
+    let helmet = ItemLookup.getItem(armorHelmet);
     let chestArmor = ItemLookup.getItem(armorChest);
+    let legwear = ItemLookup.getItem(armorLegwear);
+    let boots = ItemLookup.getItem(armorBoots);
+    let gauntlets = ItemLookup.getItem(armorGauntlets);
 
-    useEffect( () => {
-        chestArmor = ItemLookup.getItem(armorChest);
-    } )
 
     return (
         <div>
@@ -28,11 +29,11 @@ export default function GameCharacterUI()
                 <h4>Gear</h4>
 
                 <ul>
-                    <li>Helmet: Helm of defaults</li>
+                    <li>Helmet: {helmet?.name}</li>
                     <li>Chest: {chestArmor?.name}</li>
-                    <li>Legs: Greaves of simpleness</li>
-                    <li>Gauntlets: Leather gloves</li>
-                    <li>Boots: Comfy shoes</li>
+                    <li>Legs: {legwear?.name}</li>
+                    <li>Gauntlets: {gauntlets?.name}</li>
+                    <li>Boots: {boots?.name}</li>
                     <li>Amulet: Cursed charm</li>
                 </ul>
             </section>   

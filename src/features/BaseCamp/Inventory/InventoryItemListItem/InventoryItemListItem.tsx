@@ -22,7 +22,10 @@ export default function InventoryItemListItem( props: IProps )
     }
 
     // Actions
-    const handleEquipItem = () => dispatch(equipItem(props.item));
+    const handleEquipItem = () => {
+        dispatch(equipItem({ id: props.item, idx: props.idx }));
+        props.setSelected(-1);
+    }
    
     useEffect( () => {
         itemObject = ItemLookup.getItem(props.item);
@@ -30,13 +33,17 @@ export default function InventoryItemListItem( props: IProps )
         controlsRef.current?.classList[action]('hide');
     } )
 
+    const equipButton = itemObject?.equip ? (<li onClick={handleEquipItem}>Equip</li>) : undefined;
+
     return (
         <div
             className="inventory__list-item"
-            onClick={toggleItemControls}
         >
-            <h3>{itemObject?.name}</h3>
-            <p>{itemObject?.description}</p>
+            <span onClick={toggleItemControls}>
+                <h3>{itemObject?.name}</h3>
+                <p>{itemObject?.description}</p>
+            </span>
+     
 
             <ul className="inventory__list-item__stats">
             </ul>
@@ -45,7 +52,7 @@ export default function InventoryItemListItem( props: IProps )
                 ref={controlsRef}
                 className="inventory__list-item__controls hide" 
             >
-                <li onClick={handleEquipItem}>Equip</li>
+                {equipButton}
                 <li>Destroy</li>
             </ul>
         </div>

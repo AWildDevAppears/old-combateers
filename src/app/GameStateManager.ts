@@ -12,6 +12,12 @@ const GameStateManager: IGameStateManager = {
         'item:000001',
         'item:000002',
         'item:000003',
+        'armo:000001',
+        'armo:000002',
+        'armo:000003',
+        'armo:000004',
+        'armo:000005',
+        'armo:000006',
      ],
     character: {
         health: 100,
