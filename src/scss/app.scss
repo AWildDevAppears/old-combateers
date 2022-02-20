@@ -3,8 +3,10 @@
 @import './core/normalise';
 
 // Components
+@import './components/card';
 
 // Layout 
+@import './layout/deck';
 
 // Page
 @import './page/inventory';
