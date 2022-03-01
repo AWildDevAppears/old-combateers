@@ -7,8 +7,10 @@ import GamePartyView from './views/camp/GamePartyView';
 import GameQuestSelectView from './views/camp/GameQuestSelectView';
 import GameShopView from './views/camp/GameShopView';
 import GameStartView from './views/GameStartView';
+import GameDungeonView from './views/quest/GameDungeonView';
 
 import './scss/app.scss';
+
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
     
           { /* Quests */ }
           <Route path="quest" element={<GameQuestSelectView />}/>
+          <Route path="dungeon" element={<GameDungeonView/>} />
         </Routes>
       </BrowserRouter>
       
